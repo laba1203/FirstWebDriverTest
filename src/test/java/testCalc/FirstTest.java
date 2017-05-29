@@ -6,12 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import util.PropertyLoader;
 import org.testng.annotations.BeforeClass;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by MLaba on 22-May-17.
@@ -51,10 +53,6 @@ public class FirstTest {
         WebElement secondField = driver.findElement(By.xpath("//input[@ng-model='second']"));
         secondField.sendKeys("1");
 
-//**To delete:
-//        System.out.println("first testCalc value: "+ firstField.getText());
-//       String ar1;
-
         Assert.assertEquals(firstField.getAttribute("value"), "1");
         Assert.assertEquals(secondField.getAttribute("value"), "1");
 
@@ -73,27 +71,22 @@ public class FirstTest {
     public void test4() throws InterruptedException {
         WebElement goButton = driver.findElement(By.id("gobutton"));
         goButton.click();
+//        String textResult = null;
 //////--Easiest solutio n---
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//h2[@class = 'ng-binding']"), "2"));  //textToBePresentInElement(By.xpath("//h2[@class = 'ng-binding']"), "2"));
-        String textResult = driver.findElement(By.xpath("//h2[@class = 'ng-binding']")).getText();
+        try{
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//h2[@class = 'ng-binding']"), "2"));  //textToBePresentInElement(By.xpath("//h2[@class = 'ng-binding']"), "2"));
+//            textResult = driver.findElement(By.xpath("//h2[@class = 'ng-binding']")).getText();
+        }
+        catch (org.openqa.selenium.TimeoutException e){
+            Assert.assertTrue(false);
+        }
 
-//////---Better solution-----//////
-//        String previousText = null;
-//        WebElement result;
-//        for (int i = 0; i < 6; i++) {
-//
-//            result = driver.findElement(By.xpath("//h2[@class = 'ng-binding']"));
-//            previousText = result.getText();
-//            wait.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath("//h2[@class = 'ng-binding']"), previousText));
-//        }
-//        String textResult = previousText;
-
-        Assert.assertEquals(textResult, "2");
+//        Assert.assertEquals(textResult, "2");
     }
 
-//    @AfterClass
-//    public void tearDown(){
-//        driver.close();
-//    }
+    @AfterClass
+    public void tearDown(){
+        driver.close();
+    }
 
 }
