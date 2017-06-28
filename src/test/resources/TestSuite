@@ -1,0 +1,38 @@
+<suite name="SuiteName">
+    <test name="TestName_1" preserve-order="true" >
+        <classes>
+            <class name="testCalc.FirstTest">
+                <methods>
+                    <include name="test1"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TEstName_2" preserve-order="true" >
+        <classes>
+            <class name="testCalc.FirstTest">
+                <methods>
+                    <include name="test2"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TEstName_2" preserve-order="true" >
+        <classes>
+            <class name="testCalc.FirstTest">
+                <methods>
+                    <include name="test3"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="TEstName_2" preserve-order="true" >
+        <classes>
+            <class name="testCalc.FirstTest">
+                <methods>
+                    <include name="test4"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

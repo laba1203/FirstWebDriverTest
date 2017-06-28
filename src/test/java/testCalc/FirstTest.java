@@ -22,6 +22,7 @@ public class FirstTest {
     private WebDriver driver;
     private WebDriverWait wait;
 
+
     @BeforeClass
     public void setUp(){
         final File file = new File(PropertyLoader.loadProperty("path.webDriver"));
@@ -72,7 +73,6 @@ public class FirstTest {
         WebElement goButton = driver.findElement(By.id("gobutton"));
         goButton.click();
 //        String textResult = null;
-//////--Easiest solutio n---
         try{
             wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//h2[@class = 'ng-binding']"), "2"));  //textToBePresentInElement(By.xpath("//h2[@class = 'ng-binding']"), "2"));
 //            textResult = driver.findElement(By.xpath("//h2[@class = 'ng-binding']")).getText();
@@ -81,8 +81,56 @@ public class FirstTest {
             Assert.assertTrue(false);
         }
 
-//        Assert.assertEquals(textResult, "2");
     }
+
+    @Test
+    public void testDivision(){
+        operation("10", "DIVISION", "2", "5");
+    }
+
+    @Test
+    public void testModulo(){
+        operation("17", "MODULO", "3", "2");
+    }
+
+    @Test
+    public void testMultiplication(){
+        operation("3", "MULTIPLICATION", "4", "12");
+    }
+
+    @Test
+    public void testSubtraction(){
+        operation("7", "SUBTRACTION", "6", "1");
+    }
+
+
+
+
+
+    public void operation(String value1, String operator ,String value2, String expectedValue){
+        WebElement firstField = driver.findElement(By.xpath("//input[@ng-model='first']"));
+        firstField.sendKeys(value1);
+        WebElement secondField = driver.findElement(By.xpath("//input[@ng-model='second']"));
+        secondField.sendKeys(value2);
+
+        Select operatorField = new Select(driver.findElement(By.xpath("//select[@ng-model='operator']")));
+        operatorField.selectByValue(operator);
+
+        WebElement goButton = driver.findElement(By.id("gobutton"));
+        goButton.click();
+
+        try{
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//h2[@class = 'ng-binding']"), expectedValue));  //textToBePresentInElement(By.xpath("//h2[@class = 'ng-binding']"), "2"));
+//            textResult = driver.findElement(By.xpath("//h2[@class = 'ng-binding']")).getText();
+        }
+        catch (org.openqa.selenium.TimeoutException e){
+            Assert.assertTrue(false);
+        }
+
+
+    }
+
+
 
     @AfterClass
     public void tearDown(){
