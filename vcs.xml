@@ -6,8 +6,12 @@
           <option name="url" value="https://github.com/laba1203/TalkableProductAutomationProject.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/nata1507/TalkableProductAutomationProject.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="C:\Users\Family\Documents\Programming\GitHub\talkable" />
+    <option name="cloneParentDir" value="C:\Users\Family\Documents\Programming\GitHub\nata1507" />
   </component>
 </application>
