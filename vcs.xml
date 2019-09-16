@@ -14,6 +14,10 @@
           <option name="url" value="https://github.com/talkable/talkable-tests-automation.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/laba1203/new-game.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Family\Documents\Programming\GitHub" />
